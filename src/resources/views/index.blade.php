@@ -1,0 +1,73 @@
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+@endsection
+
+@section('content')
+<div class="admin__alert">
+  @if (session('message'))
+  <div class="admin__alert--success">
+    {{ session('message') }}
+  </div>
+  @endif
+  @if ($errors->any())
+  <div class="admin__alert--danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+</div>
+<div class="admin__content">
+  <div class="section__title">
+    <h2>カテゴリ登録</h2>
+  </div>
+  <form class="create-form" action="/admin" method="post">
+    @csrf
+    <div class="create-form__item">
+      <input class="create-form__item-input" type="text" name="name" value="{{ old('name') }}" placeholder="例: 食料品">
+    </div>
+    <div class="create-form__button">
+      <button class="create-form__button-submit" type="submit">登録</button>
+    </div>
+  </form>
+  <div class="admin-table">
+    <table class="admin-table__inner">
+      <tr class="admin-table__row">
+        <th class="admin-table__header">登録済みカテゴリ</th>
+      </tr>
+      <!-- @foreach ($admins as $admin)
+      <tr class="admin-table__row">
+        <td class="admin-table__item">
+          <form class="update-form" action="/admin/update" method="post">
+            @method('PATCH')
+            @csrf  
+            <div class="update-form__item">
+              <input class="update-form__item-input" type="text" name="name" value="{{ $admin['name'] }}">
+              <input type="hidden" name="id" value="{{ $admin['id'] }}">
+            </div>
+            <div class="update-form__button">
+              <button class="update-form__button-submit" type="submit">修正</button>
+            </div>
+          </form>
+        </td>
+        <td class="admin-table__item">
+          <form class="delete-form" action="/admin/delete" method="post">
+            @method('DELETE')
+            @csrf
+            <div class="delete-form__button">
+              <input type="hidden" name="id" 
+              value="{{ $admin['id'] }}">
+              <button class="delete-form__button-submit" type="submit">削除</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+      @endforeach -->
+    </table>
+  </div>
+</div>
+@endsection

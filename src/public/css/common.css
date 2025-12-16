@@ -1,0 +1,29 @@
+.header {
+    background: none;
+    border-bottom: 1px solid #B7AEAA;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+}
+
+.header-utilities {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__logo {
+    color: #B7AEAA;
+    font-family: "Times New Roman", "Didot", "Georgia", serif;
+    text-decoration: none;
+    font-weight: none;
+    font-size: 35px;
+}
+
+.header-nav__link {
+    color: #fff;
+    text-decoration: none;
+}
