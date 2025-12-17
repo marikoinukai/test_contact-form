@@ -24,36 +24,37 @@
 <div class="contact__content">
   <div class="section__title">
     <h2>Contact</h2>
-</div>
+  </div>
 <form class="create-form" action="/contacts" method="post">
   @csrf
+  
     <div class="create-form__item">
-      <label for="contact_name" class="create-form__label">お名前</label>
+      <label for="contact_name" class="create-form__label">お名前４５６７８９０</label>
       <input 
         class="create-form__item-input" 
         type="text" 
         name="contact_name"
         value="{{ old('contact_name') }}"
-        placeholder="例: 牛乳">
+        placeholder="例: 山田">
       <label for="price" class="create-form__label">性別</label>
       <input 
         class="create-form__item-input2" 
-        type="number" 
+        type="text" 
         name="price"
         value="{{ old('price') }}"
-        placeholder="例: 350">
-          <select class="create-form__item-select" name="admin_id">
+        placeholder="例: 太郎">
+          <!-- <select class="create-form__item-select" name="admin_id">
             <option value="">カテゴリ</option>
             @foreach ($admins as $admin)
               <option value="{{ $admin['id'] }}">{{ $admin['name'] }}</option>
             @endforeach
-          </select>
+          </select> -->
     </div>
-    <div class="create-form__button">
+    <!-- <div class="create-form__button">
       <button class="create-form__button-submit" type="submit">
         登録
       </button>
-    </div>
+    </div> -->
 </form>
 <div class="section__title">
   <h2>商品検索</h2>

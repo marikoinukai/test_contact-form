@@ -1,4 +1,4 @@
-.contact__alert--success {
+/* .contact__alert--success {
     padding: 10px 30px;
     border-color: #badbcc;
     background-color: #d1e7dd;
@@ -14,31 +14,39 @@
 
 .contact__alert--danger ul {
     margin: 0;
-}
+} */
 
 .contact__content {
     margin: 0 auto;
     padding: 30px 15px;
     max-width: 1230px;
+    color: #b2a9a0;
+    /* font-family: "Times New Roman", "Didot", "Georgia", serif;
+    text-decoration: none;
+    font-weight: none; */
+    font-size: 20px;
+    text-align: center;
 }
 
 .section__title {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
+    text-align: center;
+    /* font-weight: none; */
 }
 
-.create-form, .search-form {
+.create-form {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     margin-bottom: 15px;
-    width: 70%;
+    width: 100%;
     text-align: center;
 }
 
-.create-form__item, .search-form__item {
+.create-form__item, {
     display: flex;
-    width: 70%;
+    width: 100%;
     align-items: center;
 }
 
@@ -46,9 +54,9 @@
     display: block;      
     font-weight: bold;  
     margin-bottom: 5px;
-    color: #333;
+    color: #b2a9a0;
     font-size: 0.9rem;
-    width: 30px;
+    width: 200px;
     min-width: 30px;
     font-weight: bold;
     margin-right: 10px;
@@ -182,3 +190,6 @@
     color: #fff;
     cursor: pointer;
 }
+
+
+

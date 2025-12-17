@@ -16,13 +16,13 @@
     <div class="header__inner">
       <div class="header-utilities">
         <a class="header__logo" href="/">FashionablylLate</a>
-        <nav>
+        <!-- <nav>
          <ul class="header-nav">
            <li class="header-nav__item">
             <a class="header-nav__link" href="/admin">カテゴリ設定</a>
            </li>
          </ul>
-        </nav>
+        </nav> -->
       </div>  
     </div>
   </header>

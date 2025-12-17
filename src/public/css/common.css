@@ -13,17 +13,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .header__logo {
-    color: #B7AEAA;
-    font-family: "Times New Roman", "Didot", "Georgia", serif;
+    color: #b2a9a0;
+    /* font-family: "Times New Roman", "Didot", "Georgia", serif; */
     text-decoration: none;
-    font-weight: none;
+    /* font-weight: none; */
     font-size: 35px;
+    margin: 0 auto;
 }
 
-.header-nav__link {
-    color: #fff;
+/* .header-nav__link {
+    color: #190c0cff;
     text-decoration: none;
+    position: absolute;
+    right: 0;
+} */
+
+/* 全体と全体では効かないh2のフォントを指定 */
+body, h2 {
+    font-family: "Times New Roman", "Didot", "Georgia", "Yu Gothic", serif;
+    font-weight: 400;
+}
+/* フォームを必ず継承させている */
+input, select, button {
+    font-family: inherit;
+
 }
