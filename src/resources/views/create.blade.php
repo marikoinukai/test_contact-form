@@ -38,10 +38,15 @@
   <div class="form-row">
     <label class="form-label">性別<span class="required">※</span></label>
       <div class="form-field">
+        <div class="form-field radio-field-box">
         <div class="form-field-radio label">
-        <label><input type="radio" name="gender" value="male" checked> 男性</label>
-        <label><input type="radio" name="gender" value="female"> 女性</label>
-        <label><input type="radio" name="gender" value="other"> その他</label>
+        <label class="radio"><input type="radio" name="gender" value="male" checked> <span class="radio-mark"></span>男性</label>
+        <label class="radio"><input type="radio" name="gender" value="female"><span class="radio-mark"></span> 女性</label>
+        <label class="radio"><input type="radio" name="gender" value="other"> <span class="radio-mark"></span>その他</label>
+
+
+
+</div>
       </div>
       </div>
     </div>
