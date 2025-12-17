@@ -25,36 +25,57 @@
   <div class="section__title">
     <h2>Contact</h2>
   </div>
-<form class="create-form" action="/contacts" method="post">
+<form class="contact-form" action="/contacts" method="post">
   @csrf
-  
-    <div class="create-form__item">
-      <label for="contact_name" class="create-form__label">お名前４５６７８９０</label>
-      <input 
-        class="create-form__item-input" 
-        type="text" 
-        name="contact_name"
-        value="{{ old('contact_name') }}"
-        placeholder="例: 山田">
-      <label for="price" class="create-form__label">性別</label>
-      <input 
-        class="create-form__item-input2" 
-        type="text" 
-        name="price"
-        value="{{ old('price') }}"
-        placeholder="例: 太郎">
-          <!-- <select class="create-form__item-select" name="admin_id">
-            <option value="">カテゴリ</option>
-            @foreach ($admins as $admin)
-              <option value="{{ $admin['id'] }}">{{ $admin['name'] }}</option>
-            @endforeach
-          </select> -->
-    </div>
-    <!-- <div class="create-form__button">
-      <button class="create-form__button-submit" type="submit">
-        登録
-      </button>
-    </div> -->
+  <div class="form-row">
+  <label class="form-label">お名前<span class="required">※</span></label>
+  <div class="form-field">
+    <input type="text" placeholder="例: 山田">
+    <input type="text" placeholder="例: 太郎">
+  </div>
+</div>
+
+<div class="form-row">
+  <label class="form-label">性別<span class="required">※</span></label>
+  <div class="form-field">
+    <label><input type="radio" name="gender"> 男性</label>
+    <label><input type="radio" name="gender"> 女性</label>
+    <label><input type="radio" name="gender"> その他</label>
+  </div>
+</div>
+
+<div class="form-row">
+  <label class="form-label">電話番号<span class="required">※</span></label>
+  <div class="form-field tel">
+    <input type="text">
+    <span>-</span>
+    <input type="text">
+    <span>-</span>
+    <input type="text">
+  </div>
+</div>
+
+
+
+
+
+<div class="form-field">
+  <select class="form-select">
+    <option value="">選択してください</option>
+    <option>お問い合わせ</option>
+    <option>ご質問</option>
+  </select>
+</div>
+
+
+
+
+
+
+
+
+
+
 </form>
 <div class="section__title">
   <h2>商品検索</h2>

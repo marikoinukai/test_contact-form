@@ -1,3 +1,95 @@
+.contact-form {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 1行ごとのレイアウト */
+.form-row {
+  display: grid;
+  grid-template-columns: 200px 1fr; /* 左：ラベル / 右：入力 */
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.form-label {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  color: #9c8f86;
+  font-size: 16px;
+}
+
+.required {
+  color: #e56b6b;        /* 画像と同系の赤 */
+  font-size: 14px;      /* 文字より少し小さく */
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"] {
+  width: 100%;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  border: none;
+  font-family: inherit;
+}
+
+.form-field {
+  display: flex;
+  gap: 16px;
+}
+
+.form-field label {
+  margin-right: 24px;
+  font-size: 14px;
+  color: #7d736c;
+}
+
+.form-field input[type="radio"] {
+  margin-right: 6px;
+}
+
+.form-field.tel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-field.tel input {
+  width: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.form-label {
+  text-align: left;
+}
+
+.form-field {
+  text-align: left;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px 40px 12px 16px; /* 右に余白 */
+  background-color: #f5f5f5;
+  border: none;
+  font-family: inherit;
+  color: #9c8f86;
+
+  /* ▼ を消す */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* カスタム▼ */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239c8f86' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
 /* .contact__alert--success {
     padding: 10px 30px;
     border-color: #badbcc;
