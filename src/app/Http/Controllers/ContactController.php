@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+// 1. ContactRequestをインポートする
+use App\Http\Requests\ContactRequest; 
+use App\Models\Contact; // 保存に使う場合はModelも必要
+
 use Illuminate\Http\Request;
-use App\Models\Contact;
-use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -35,7 +37,7 @@ class ContactController extends Controller
     }
 
     // DBへの保存処理
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         // 修正ボタンが押された場合の処理
         if($request->input('back')){
@@ -55,7 +57,7 @@ class ContactController extends Controller
         ]);
 
         // 電話番号を結合
-        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3;
+        $contact['tel'] = $request->tel1 . '-' . $request->tel2 .'-' .  $request->tel3;
 
         Contact::create($contact);
 
