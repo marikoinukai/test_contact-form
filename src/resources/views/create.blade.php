@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
 @endsection
 
 @section('content')
@@ -25,29 +25,29 @@
   <div class="section__title">
     <h2>Contact</h2>
   </div>
-<form class="contact-form" action="/contacts" method="post">
+<form class="contact-form" action="/confirm" method="post">
   @csrf
   <div class="form-row">
     <label class="form-label">お名前<span class="required">※</span></label>
       <div class="form-field">
-        <input type="text" placeholder="例: 山田">
-        <input type="text" placeholder="例: 太郎">
+        <input type="text" name="last_name" placeholder="例: 山田" value="{{ old('last_name') }}">
+        <input type="text" name="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}">
       </div>
   </div>
 
   <div class="form-row">
     <label class="form-label">性別<span class="required">※</span></label>
-      <div class="form-field">
+      <!-- <div class="form-field"> -->
         <div class="form-field radio-field-box">
-        <div class="form-field-radio label">
-        <label class="radio"><input type="radio" name="gender" value="male" checked> <span class="radio-mark"></span>男性</label>
-        <label class="radio"><input type="radio" name="gender" value="female"><span class="radio-mark"></span> 女性</label>
-        <label class="radio"><input type="radio" name="gender" value="other"> <span class="radio-mark"></span>その他</label>
+        <!-- <div class="form-field-radio label"> -->
+        <label class="radio"><input type="radio" name="gender" value="male" checked><span class="radio-mark"></span><span class="radio-text">男性</span></label>
+        <label class="radio"><input type="radio" name="gender" value="female"><span class="radio-mark"></span><span class="radio-text">女性</span></label>
+        <label class="radio"><input type="radio" name="gender" value="other"><span class="radio-mark"></span><span class="radio-text">その他</span></label>
 
 
 
-</div>
-      </div>
+<!-- </div>
+      </div> -->
       </div>
     </div>
 
@@ -108,7 +108,7 @@
         <textarea name="content" placeholder="お問い合わせ内容をご記載ください。"></textarea>
       </div>
   </div>
-</form>
+<!-- </form> -->
 
 <form class="search-form" action="/contacts/search" method="get">
   @csrf
@@ -116,8 +116,8 @@
       <button class="form__button-submit" type="submit">確認画面</button>
     </div>
 </form>
-
-    </table>
-  </div>
+</form>
+    <!-- </table> -->
+  <!-- </div> -->
 </div>
 @endsection

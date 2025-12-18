@@ -1,3 +1,19 @@
+.contact__content {
+    margin: 0 auto;
+    padding: 15px 15px;
+    max-width: 1230px;
+    color: #b2a9a0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.section__title {
+    margin: 15px auto 35px;
+    width: 100%;
+    text-align: center;
+}
+
+
 .contact-form {
   max-width: 900px;
   margin: 0 auto;
@@ -5,17 +21,16 @@
 
 .form-label {
   font-family: "Meiryo", "Noto Serif JP", serif;
-  color: #9c8f86;
+  color: #7d736c;
   font-size: 16px;
 }
 
 .required {
-  color: #e56b6b;        /* 画像と同系の赤 */
+  color: #ff4d4b;        /* 画像と同系の赤 */
   font-size: 14px;      /* 文字より少し小さく */
   margin-left: 4px;
   vertical-align: middle;
 }
-
 .form-field input[type="text"],
 .form-field input[type="email"] {
   width: 100%;
@@ -66,7 +81,7 @@
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center; /* 数字を中央に表示 */
-}
+} 
 
 .form-row {
   display: grid;
@@ -202,55 +217,56 @@
     margin: 0;
 } */
 
-.contact__content {
-    margin: 0 auto;
-    padding: 15px 15px;
-    max-width: 1230px;
-    color: #b2a9a0;
-    font-size: 20px;
-    text-align: center;
-}
 
-.section__title {
-    margin: 15px auto 35px;
-    width: 100%;
-    text-align: center;
+/* ラジオボタン全体の並び */
+.radio-field-box {
+  display: flex;
+  gap: 40px;
 }
 
 .radio {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  margin-right: 24px;
   cursor: pointer;
-  color: #7d736c;
-}
-
-/* inputは完全に隠す */
-.radio input {
-    appearance: none;
-  -webkit-appearance: none;
-  display: none;
-}
-
-.radio-mark {
-  width: 14px;
-  height: 14px;
-  border: 2px solid #9c8f86;
-  border-radius: 50%;
   position: relative;
 }
 
-.radio input:checked + .radio-mark::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: #9c8f86;
-  border-radius: 50%;
+/* 元のボタンを完全に透明にする（消さない） */
+.radio input {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* 自作の円（未選択時は何も表示しない設定） */
+.radio-mark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: transparent; /* 未選択時は透明 */
+    position: relative;
+    flex-shrink: 0;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+/* ★チェックが入ったときだけ、背景色を塗る */
+.radio input:checked + .radio-mark {
+    background-color: #9c8f86; /* 画像のような茶色で塗りつぶし */
+}
+
+/* 中の点は不要になるので、もし::afterの設定があれば削除するか以下で無効化します */
+.radio input:checked + .radio-mark::after {
+    display: none;
+}
+
+.radio-text {
+  color: #7d736c;
+  font-size: 16px;
 }
 /* .create-form {
     display: flex;

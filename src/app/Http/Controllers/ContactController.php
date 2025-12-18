@@ -4,49 +4,61 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
-use App\Models\Admin;
 use App\Http\Requests\ContactRequest;
-// use App\Models\Admin;
 
 class ContactController extends Controller
 {
+    // 入力画面の表示
     public function index()
     {
-        // $contacts = Contact::with('admin')->get();
-        // $admins = Admin::all();
-        // return view('create', compact('contacts', 'admins'));
-        $admins = []; 
-        $contacts = []; 
-
-        return view('create', compact('contacts','admins'));
+        return view('create');
     }
 
-    public function store(ContactRequest $request)
+    // 確認画面の表示
+    public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['admin_id', 'contact_name','price']);
+        $contact = $request->only([
+            'last_name', 
+            'first_name', 
+            'gender', 
+            'email', 
+            'tel1', 
+            'tel2', 
+            'tel3', 
+            'address', 
+            'building', 
+            'category_id', // お問い合わせの種類
+            'content'      // お問い合わせ内容
+        ]);
+
+        return view('confirm', compact('contact'));
+    }
+
+    // DBへの保存処理
+    public function store(Request $request)
+    {
+        // 修正ボタンが押された場合の処理
+        if($request->input('back')){
+            return redirect('/')->withInput();
+        }
+
+        // 保存用データの作成
+        $contact = $request->only([
+            'first_name', 
+            'last_name', 
+            'gender', 
+            'email', 
+            'address', 
+            'building', 
+            'category_id', 
+            'content'
+        ]);
+
+        // 電話番号を結合
+        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3;
+
         Contact::create($contact);
-        return redirect('/')->with('message', '商品を登録しました');
-    }
 
-    public function update(ContactRequest $request)
-    {
-        $contact = $request->only(['contact_name']);
-        Contact::find($request->id)->update($contact);
-        return redirect('/')->with('message', '商品を修正しました');
-    }
-
-    public function destroy(Request $request)
-    {
-        Contact::find($request->id)->delete();
-        return redirect('/')->with('message', 'Contactを削除しました');
-    }
-
-    public function search(Request $request)
-    {
-        $contacts = Contact::with('admin')->AdminSearch($request->admin_id)->KeywordSearch($request->keyword)
-        ->PriceSearch($request->price)
-        ->get();
-        $admins = Admin::all();
-        return view('index', compact('contacts', 'admins'));
+        return view('thanks');
     }
 }
