@@ -66,6 +66,11 @@ class ContactController extends Controller
 
         Contact::create($contact);
 
-        return view('thanks');
+        return redirect('/thanks');
     }
+
+    public function thanks()
+        {
+            return view('thanks');
+        }
 }

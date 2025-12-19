@@ -1,0 +1,126 @@
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{{-- ページネーションの見た目を整えるためのCDN（必要に応じて） --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+@endsection
+
+@section('content')
+<div class="admin__content">
+    <div class="admin__header">
+        <h2 class="admin__title">Admin</h2>
+        {{-- ログアウトボタン（右上に配置） --}}
+        <form class="form" action="/logout" method="post">
+            @csrf
+            <button class="header-button" type="submit">logout</button>
+        </form>
+    </div>
+
+    {{-- 検索フォームエリア --}}
+    <div class="search-section">
+        <form class="search-form" action="/admin/search" method="get">
+            @csrf
+            <div class="search-form__item">
+                <input type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword') }}">
+            </div>
+
+            <div class="search-form__item">
+                <select name="gender">
+                    <option value="" selected>性別</option>
+                    <option value="1">男性</option>
+                    <option value="2">女性</option>
+                    <option value="3">その他</option>
+                </select>
+            </div>
+
+            <div class="search-form__item">
+                <select name="category_id">
+                    <option value="" selected>お問い合わせの種類</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->content }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="search-form__item">
+                <input type="date" name="date" placeholder="年/月/日">
+            </div>
+
+            <div class="search-form__actions">
+                <button class="search-form__button-submit" type="submit">検索</button>
+                <button class="search-form__button-reset" type="reset">リセット</button>
+            </div>
+        </form>
+    </div>
+
+    {{-- ツールバー（エクスポートとページネーション） --}}
+    <div class="admin-toolbar">
+        <button class="export-button">エクスポート</button>
+        <div class="pagination-wrapper">
+            {{ $contacts->links('vendor.pagination.custom') }} 
+            {{-- ※シンプルな数字にするにはカスタムビューが必要です --}}
+        </div>
+    </div>
+
+    {{-- お問い合わせ一覧テーブル --}}
+    <div class="admin-table__wrapper">
+        <table class="admin-table">
+            <tr class="admin-table__row">
+                <th class="admin-table__header">お名前</th>
+                <th class="admin-table__header">性別</th>
+                <th class="admin-table__header">メールアドレス</th>
+                <th class="admin-table__header">お問い合わせの種類</th>
+                <th class="admin-table__header"></th>
+            </tr>
+            @foreach($contacts as $contact)
+            <tr class="admin-table__row">
+                <td class="admin-table__item">
+                    {{ $contact->last_name }}　{{ $contact->first_name }}
+                </td>
+                <td class="admin-table__item">
+                    @if($contact->gender == 1) 男性
+                    @elseif($contact->gender == 2) 女性
+                    @else その他 @endif
+                </td>
+                <td class="admin-table__item">
+                    {{ $contact->email }}
+                </td>
+                <td class="admin-table__item">
+                    {{ $contact->category->content }}
+                </td>
+                {{-- 詳細ボタン --}}
+<td class="admin-table__item">
+    <a href="#modal-{{ $contact->id }}" class="detail-button">詳細</a>
+</td>
+
+{{-- モーダル本体（各データごとに作成） --}}
+<div class="modal" id="modal-{{ $contact->id }}">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal__content">
+        <a href="#!" class="modal__close">×</a>
+        <div class="modal__inner">
+            <table class="modal-table">
+                <tr><th>お名前</th><td>{{ $contact->last_name }}　{{ $contact->first_name }}</td></tr>
+                <tr><th>性別</th><td>{{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</td></tr>
+                <tr><th>メールアドレス</th><td>{{ $contact->email }}</td></tr>
+                <tr><th>電話番号</th><td>{{ $contact->tel }}</td></tr>
+                <tr><th>住所</th><td>{{ $contact->address }}</td></tr>
+                <tr><th>建物名</th><td>{{ $contact->building }}</td></tr>
+                <tr><th>お問い合わせの種類</th><td>{{ $contact->category->content }}</td></tr>
+                <tr><th>お問い合わせ内容</th><td>{{ $contact->detail }}</td></tr>
+            </table>
+            <form action="/admin/delete" method="post" class="delete-form">
+                @csrf
+                <input type="hidden" name="id" value="{{ $contact->id }}">
+                <button type="submit" class="delete-button">削除</button>
+            </form>
+        </div>
+    </div>
+</div>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+</div>
+@endsection
