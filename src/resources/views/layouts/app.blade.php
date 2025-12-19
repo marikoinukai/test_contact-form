@@ -16,13 +16,17 @@
     <div class="header__inner">
       <div class="header-utilities">
         <a class="header__logo" href="/">FashionablylLate</a>
-        <!-- <nav>
-         <ul class="header-nav">
-           <li class="header-nav__item">
-            <a class="header-nav__link" href="/admin">カテゴリ設定</a>
-           </li>
-         </ul>
-        </nav> -->
+        
+        {{-- ボタンの切り替えロジック --}}
+            <nav class="header__nav">
+                @if (Request::is('login'))
+                    <a class="header__button" href="/register">register</a>
+                @elseif (Request::is('register'))
+                    <a class="header__button" href="/login">login</a>
+                @endif
+            </nav>
+
+
       </div>  
     </div>
   </header>
