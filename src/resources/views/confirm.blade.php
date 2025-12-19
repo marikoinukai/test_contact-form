@@ -64,14 +64,20 @@
         <tr class="confirm-table__row">
           <th class="confirm-table__header">お問い合わせの種類</th>
           <td class="confirm-table__text">
-            <span>{{ $contact['category_id'] }}</span> <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
-          </td>
+  {{-- category_idから、対応するCategoryモデルのデータを1つ取得して表示 --}}
+    @php
+        $category = \App\Models\Category::find($contact['category_id']);
+    @endphp
+
+    <span>{{ $category->content ?? '' }}</span>
+    <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
+</td>
         </tr>
         <tr class="confirm-table__row">
           <th class="confirm-table__header">お問い合わせ内容</th>
           <td class="confirm-table__text">
-            <span>{{ $contact['content'] }}</span>
-            <input type="hidden" name="content" value="{{ $contact['content'] }}">
+            <span>{{ $contact['detail'] }}</span>
+            <input type="hidden" name="detail" value="{{ $contact['detail'] }}">
           </td>
         </tr>
       </table>

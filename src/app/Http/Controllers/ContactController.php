@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // 1. ContactRequestをインポートする
 use App\Http\Requests\ContactRequest; 
 use App\Models\Contact; // 保存に使う場合はModelも必要
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,11 @@ class ContactController extends Controller
     // 入力画面の表示
     public function index()
     {
-        return view('create');
+    // categoriesテーブルから全データを取得
+    $categories = Category::all();
+
+    // viewに$categoriesを渡す
+    return view('create', compact('categories'));
     }
 
     // 確認画面の表示
@@ -29,8 +34,8 @@ class ContactController extends Controller
             'tel3', 
             'address', 
             'building', 
-            'category_id', // お問い合わせの種類
-            'content'      // お問い合わせ内容
+            'category_id', 
+            'detail'       // content から detail に修正
         ]);
 
         return view('confirm', compact('contact'));
@@ -53,11 +58,11 @@ class ContactController extends Controller
             'address', 
             'building', 
             'category_id', 
-            'content'
+            'detail'      // content から detail に修正
         ]);
 
-        // 電話番号を結合
-        $contact['tel'] = $request->tel1 . '-' . $request->tel2 .'-' .  $request->tel3;
+        // 電話番号を結合（ハイフンなしで保存する場合は '-' を消してください）
+        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3;
 
         Contact::create($contact);
 
