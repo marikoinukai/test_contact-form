@@ -1,0 +1,59 @@
+.auth__content {
+    background-color: #f4f2f0;
+    min-height: 100vh;
+    padding: 50px 0;
+}
+
+.auth__title {
+    text-align: center;
+    color: #8b7969;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.auth__card {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form__group {
+    margin-bottom: 25px;
+}
+
+.form__label {
+    color: #8b7969;
+    margin-bottom: 10px;
+}
+
+.form__input input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: #f4f4f4;
+    color: #333333;
+}
+
+.form__button {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.form__button-submit {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 10px 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.form__error {
+    color: #ff4d4b;
+    font-size: 14px;
+    margin-top: 5px;
+    height: 1.2em;
+    /* エラーがない時も高さを確保 */
+}

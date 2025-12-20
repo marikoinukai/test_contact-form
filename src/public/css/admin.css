@@ -1,134 +1,235 @@
-.admin__alert--success {
-    padding: 10px 30px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
-    color: #0f5132;
-}
-
-.admin__alert--danger {
-    padding: 10px 0;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    color: #842029;
-}
-
-.admin__alert--danger ul {
-    margin: 0;
-}
-
+/* 全体の背景と余白 */
 .admin__content {
-    margin: 0 auto;
-    padding: 60px 15px;
-    max-width: 1230px;
+    background-color: #fff;
+    padding: 50px 20px;
+    min-height: 100vh;
 }
 
-.create-form {
+.admin__title {
+    text-align: center;
+    color: #8b7969;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* 検索エリア */
+.search-section {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+        /* 完成図のように一行に収める */
+}
+
+/* 入力項目を均等かつ適切に広げる */
+.search-form__item {
+    flex: 1;
+}
+
+/* 名前入力欄だけ少し長くしてバランスをとる */
+.search-form__item:first-child {
+    flex: 2;
+}
+
+.search-form__item input,
+.search-form__item select {
+    width: 100%;
+        /* 親の item 幅いっぱいに広げる */
+        padding: 12px;
+        /* 高さを微調整 */
+        border: 1px solid #e0d8d0;
+        border-radius: 2px;
+        color: #b2a9a0;
+        background-color: #fbfaf9;
+        /* 入力欄の中だけ少し色をつける */
+    }
+
+.search-form__button-submit {
+    background-color: #8b7969;
+        color: #fff;
+        padding: 12px 40px;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        /* ボタンが潰れないように固定 */
+}
+
+.search-form__button-reset {
+    background-color: #f0ece9;
+        /* 完成図に合わせた薄いベージュ */
+        color: #8b7969;
+        /* 文字は茶色 */
+        padding: 12px 30px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        flex-shrink: 0;
+}
+
+/* ツールバー（エクスポートとページネーション） */
+.admin-toolbar {
+    max-width: 1100px;
+    margin: 0 auto 10px;
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
-    width: 70%;
-    text-align: center;
+    align-items: flex-end;
 }
 
-.create-form__item {
-    width: 70%;
-}
-
-.create-form__item-input {
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.create-form__button {
-    width: 20%;
-}
-
-.create-form__button-submit {
-    padding: 10px;
-    width: 100%;
-    height: 40px;
+.export-button {
+    background-color: #e0d8d0;
+    padding: 5px 15px;
     border: none;
-    border-radius: 3px;
-    background: #050b59;
-    color: #fff;
-    cursor: pointer;
+    color: #8b7969;
+}
+
+/* テーブルデザイン */
+.admin-table__wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .admin-table {
-    margin: 30px auto;
-    width: 70%;
-    text-align: center;
-}
-
-.admin-table__inner {
     width: 100%;
-}
-
-.admin-table__row {
-    border-bottom: 1px solid #ddd;
+    border-collapse: collapse;
+    background-color: #fff;
 }
 
 .admin-table__header {
-    padding: 12px;
-    width: 20%;
+    background-color: #8b7969;
+    color: #fff;
     text-align: left;
-    font-weight: bold;
+    padding: 15px;
 }
 
-.admin-table__item:first-of-type {
-    padding: 12px;
-    width: 90%;
+.admin-table__item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #7d736c;
 }
 
-.update-form {
-    display: flex;
+.detail-button {
+    border: 1px solid #f0ece9;
+        background-color: #fbfaf9;
+        color: #d1c3b5;
+        padding: 8px 20px;
+        text-decoration: none;
+        /* aタグの場合 */
+        font-size: 14px;
+        cursor: pointer;
+}
+
+/* モーダル全体の初期状態（非表示） */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 1000;
 }
 
-.update-form__item {
-    width: 80%;
-    line-height: 50%;
+/* ボタンが押された時に flex で表示（中央揃えを維持） */
+.modal:target {
+    display: flex;
 }
 
-.update-form__item-input {
+.modal-overlay {
+    position: absolute;
     width: 100%;
-    outline: none;
-    border: none;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: default;
 }
 
-.update-form__button {
-    width: 50px;
+.modal__content {
+    position: relative;
+    background: #fff;
+    width: 600px;
+    padding: 40px;
+    border-radius: 2px;
 }
 
-.update-form__button-submit {
-    padding: 5px;
+.modal__close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+}
+
+/* モーダル内テーブルの装飾 */
+.modal-table {
     width: 100%;
-    border: none;
-    border-radius: 3px;
-    background: #0080ff;
-    color: #fff;
-    cursor: pointer;
+    margin-bottom: 20px;
 }
 
-.delete-form__button {
-    width: 50px;
+.modal-table th {
+    text-align: left;
+    width: 30%;
+    padding: 10px 0;
 }
 
-.delete-form__button-submit {
-    padding: 5px;
-    width: 100%;
-    border: none;
-    border-radius: 3px;
-    background: #ff0051;
-    color: #fff;
-    cursor: pointer;
-}
-
-.section__title {
+.delete-button {
+    display: block;
     margin: 0 auto;
-    width: 70%;
+    background: #ff4d4b;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+/* ページネーションのデザイン再現 */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #e0d8d0;
+    color: #8b7969;
+    text-decoration: none;
+    background-color: #fff;
+    min-width: 35px;
+    text-align: center;
+}
+
+/* 現在表示しているページ番号（茶色背景） */
+.pagination li.active span {
+    background-color: #8b7969;
+    color: #fff;
+    border-color: #8b7969;
+}
+
+/* 無効なボタン（前へ・次へがない時） */
+.pagination li.disabled span {
+    color: #ccc;
+    cursor: not-allowed;
 }

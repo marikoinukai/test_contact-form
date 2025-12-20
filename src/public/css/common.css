@@ -1,14 +1,3 @@
-.header {
-    background: none;
-    border-bottom: 1px solid #B7AEAA;
-}
-
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
-}
-
 .header-utilities {
     display: flex;
     align-items: center;
@@ -22,15 +11,51 @@
     text-decoration: none;
     /* font-weight: none; */
     font-size: 35px;
-    margin: 0 auto;
+    margin: 0;
+    /* フォントはTimes New Romanなど明朝系がスクショに近い */
+    font-family: "Times New Roman", "Didot", serif;
 }
 
-/* .header-nav__link {
-    color: #190c0cff;
-    text-decoration: none;
+/* 右側のボタン（nav）の設定 */
+.header__nav {
     position: absolute;
     right: 0;
-} */
+    /* 右端に固定 */
+}
+
+/* 右上のボタン（login/register）のデザイン */
+.header__button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ebe6e1;
+    /* スクショの薄いベージュ */
+    color: #8b7969;
+    /* 文字の茶色 */
+    padding: 10px 25px;
+    /* ボタンのサイズ感 */
+    border-radius: 4px;
+    /* 角の丸み */
+    font-size: 14px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+/* ホバー（マウスを乗せた時）の演出 */
+.header__button:hover {
+    background-color: #d8d1ca;
+}
+
+.header {
+    background: none;
+    border-bottom: 1px solid #B7AEAA;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1230px;
+}
+
 
 /* 全体と全体では効かないh2のフォントを指定 */
 body, h2 {

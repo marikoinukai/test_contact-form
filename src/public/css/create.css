@@ -107,6 +107,8 @@
   text-align: left;
 }
 
+
+
 /* 1. 親要素：ここを基準にする */
 .select-wrapper {
     position: relative; /* これが必須！▼の基準位置になります */
@@ -199,25 +201,6 @@
         opacity: 0.8; /* 少し薄くして「押せる感」を出す */
     }
 
-/* .contact__alert--success {
-    padding: 10px 30px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
-    color: #312093e7;
-}
-
-.contact__alert--danger {
-    padding: 10px 0;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    color: #842029;
-}
-
-.contact__alert--danger ul {
-    margin: 0;
-} */
-
-
 /* ラジオボタン全体の並び */
 .radio-field-box {
   display: flex;
@@ -268,161 +251,61 @@
   color: #7d736c;
   font-size: 16px;
 }
-/* .create-form {
+
+/* 姓・名の入力欄を横並びに戻す */
+.name-fields {
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-bottom: 15px;
+    gap: 20px;
+    /* 姓と名の間の隙間 */
     width: 100%;
-    text-align: center;
 }
 
-.create-form__item, {
+.name-fields input {
+    flex: 1;
+    /* 姓と名の幅を均等にする */
+}
+
+/* 右側カラム全体を縦に並べる（入力欄 -> エラー） */
+.form-input-container {
     display: flex;
-    width: 100%;
-    align-items: center;
-}
-
-.create-form__label {
-    display: block;      
-    font-weight: bold;  
-    margin-bottom: 5px;
-    color: #b2a9a0;
-    font-size: 0.9rem;
-    width: 200px;
-    min-width: 30px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.create-form__item-input, .search-form__item-input {
-    margin-right: 10px;
-    padding: 10px;
-    width: 55%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.create-form__item-input2, .search-form__item-input2 {
-    margin-right: 10px;
-    padding: 10px;
-    width: 20%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-}
-
-.create-form__item-select, .search-form__item-select {
-    padding: 10px;
-    width: 25%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    appearance: none; 
-}
-
-.create-form__button, .search-form__button {
-    width: 20%;
-}
-
-.create-form__button-submit, .search-form__button-submit {
-    padding: 10px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    border-radius: 3px;
-    background: #050b59;
-    color: #fff;
-    cursor: pointer;
-}
-
-.contact-table {
-    margin: 30px auto;
-    width: 70%;
-    text-align: left;
-}
-
-.contact-table__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    /* 左寄せ */
     width: 100%;
 }
 
-.contact-table__row {
-    border-bottom: 1px solid #ddd;
-}
 
-.contact-table__header {
-    padding: 12px;
-    width: 20%;
-    text-align: left;
-    font-weight: bold;
-}
-
-.contact-table__header-span {
-    margin-right: 28%;
-}
-
-.contact-table__header-span2 {
-    margin-right: 20%;
-}
-
-.contact-table__header-span3 {
-    margin-right: 15%;
-}
-
-.contact-table__item:first-of-type {
-    padding: 12px;
-    width: 90%;
-}
-
-.update-form {
+/* お名前コンテナ：姓と名のグループを横に並べる */
+.name-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.update-form__item {
-    width: 40%;
-    line-height: 50%;
-}
-
-.update-form__item-input {
+    gap: 20px;
+    /* 左右のボックスの間の隙間 */
     width: 100%;
-    outline: none;
-    border: none;
+    /* 右側のカラムいっぱいに広げる */
 }
 
-.update-form__item-input2 {
-    width: 30%;
-    outline: none;
-    border: none;
-    text-align: right;
+/* 姓・名それぞれのグループ（入力欄＋エラー） */
+.name-group {
+    flex: 1;
+    /* 左右均等な幅にする */
+    display: flex;
+    flex-direction: column;
+    /* 入力欄とエラーを縦に並べる */
 }
 
-.update-form__item-p {
-    text-align: left;
-    font-size: 13px;
+/* 入力ボックス自体の幅を100%にする */
+.name-group input[type="text"] {
+    width: 100%;
+    padding: 12px 30px;
+    background: #f5f5f5;
+    border: none;
+    box-sizing: border-box;
+    /* パディングを含めた幅計算 */
 }
 
-.update-form__button-submit {
-    padding: 5px;
-    width: 50px;
-    border: none;
-    border-radius: 3px;
-    background: #0080ff;
-    color: #fff;
-    cursor: pointer;
+/* エラーメッセージの微調整 */
+.error-message {
+    margin-top: 5px;
+    line-height: 1.2;
 }
-
-.delete-form__button-submit {
-    padding: 5px;
-    width: 50px;
-    border: none;
-    border-radius: 3px;
-    background: #ff0051;
-    color: #fff;
-    cursor: pointer;
-} */
-
-
 
