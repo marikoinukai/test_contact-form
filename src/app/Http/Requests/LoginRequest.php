@@ -37,3 +37,4 @@ public function messages()
         'password.required' => 'パスワードを入力してください',
     ];
 }
+}

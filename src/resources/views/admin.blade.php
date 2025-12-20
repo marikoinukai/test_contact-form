@@ -10,11 +10,6 @@
 <div class="admin__content">
     <div class="admin__header">
         <h2 class="admin__title">Admin</h2>
-        {{-- ログアウトボタン（右上に配置） --}}
-        <form class="form" action="/logout" method="post">
-            @csrf
-            <button class="header-button" type="submit">logout</button>
-        </form>
     </div>
 
     {{-- 検索フォームエリア --}}
@@ -49,19 +44,33 @@
 
             <div class="search-form__actions">
                 <button class="search-form__button-submit" type="submit">検索</button>
-                <button class="search-form__button-reset" type="reset">リセット</button>
-            </div>
+                <a href="/admin" class="search-form__button-reset" style="text-decoration: none; display: inline-block; text-align: center;">リセット</a>
+</div>
         </form>
     </div>
 
     {{-- ツールバー（エクスポートとページネーション） --}}
     <div class="admin-toolbar">
-        <button class="export-button">エクスポート</button>
-        <div class="pagination-wrapper">
-            {{ $contacts->links('vendor.pagination.custom') }} 
-            {{-- ※シンプルな数字にするにはカスタムビューが必要です --}}
-        </div>
+        <button type="button" class="export-button" onclick="handleExport()">エクスポート</button>
+    <div class="pagination-wrapper">
+        {{ $contacts->links('vendor.pagination.custom') }} 
     </div>
+    </div>
+    <script>
+function handleExport() {
+    // 検索フォームを取得
+    const form = document.querySelector('.search-form');
+    // 元のアクションURLを保存
+    const originalAction = form.action;
+    
+    // 送信先をCSVダウンロード用のURLに変更して送信
+    form.action = '/admin/export';
+    form.submit();
+    
+    // 次の検索のために送信先を元に戻しておく
+    form.action = originalAction;
+}
+</script>
 
     {{-- お問い合わせ一覧テーブル --}}
     <div class="admin-table__wrapper">
@@ -89,35 +98,35 @@
                 <td class="admin-table__item">
                     {{ $contact->category->content }}
                 </td>
-                {{-- 詳細ボタン --}}
-<td class="admin-table__item">
-    <a href="#modal-{{ $contact->id }}" class="detail-button">詳細</a>
-</td>
+                <td class="admin-table__item">
+                    {{-- 詳細ボタン --}}
+                    <a href="#modal-{{ $contact->id }}" class="detail-button">詳細</a>
 
-{{-- モーダル本体（各データごとに作成） --}}
-<div class="modal" id="modal-{{ $contact->id }}">
-    <a href="#!" class="modal-overlay"></a>
-    <div class="modal__content">
-        <a href="#!" class="modal__close">×</a>
-        <div class="modal__inner">
-            <table class="modal-table">
-                <tr><th>お名前</th><td>{{ $contact->last_name }}　{{ $contact->first_name }}</td></tr>
-                <tr><th>性別</th><td>{{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</td></tr>
-                <tr><th>メールアドレス</th><td>{{ $contact->email }}</td></tr>
-                <tr><th>電話番号</th><td>{{ $contact->tel }}</td></tr>
-                <tr><th>住所</th><td>{{ $contact->address }}</td></tr>
-                <tr><th>建物名</th><td>{{ $contact->building }}</td></tr>
-                <tr><th>お問い合わせの種類</th><td>{{ $contact->category->content }}</td></tr>
-                <tr><th>お問い合わせ内容</th><td>{{ $contact->detail }}</td></tr>
-            </table>
-            <form action="/admin/delete" method="post" class="delete-form">
-                @csrf
-                <input type="hidden" name="id" value="{{ $contact->id }}">
-                <button type="submit" class="delete-button">削除</button>
-            </form>
-        </div>
-    </div>
-</div>
+                    {{-- ★ここが重要：モーダル本体を td の中、かつ a タグの後ろに移動させます --}}
+                    <div class="modal" id="modal-{{ $contact->id }}">
+                        <a href="#!" class="modal-overlay"></a>
+                        <div class="modal__content">
+                            <a href="#!" class="modal__close">×</a>
+                            <div class="modal__inner">
+                                <table class="modal-table">
+                                    <tr><th>お名前</th><td>{{ $contact->last_name }}　{{ $contact->first_name }}</td></tr>
+                                    <tr><th>性別</th><td>{{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</td></tr>
+                                    <tr><th>メールアドレス</th><td>{{ $contact->email }}</td></tr>
+                                    <tr><th>電話番号</th><td>{{ $contact->tel }}</td></tr>
+                                    <tr><th>住所</th><td>{{ $contact->address }}</td></tr>
+                                    <tr><th>建物名</th><td>{{ $contact->building }}</td></tr>
+                                    <tr><th>お問い合わせの種類</th><td>{{ $contact->category->content }}</td></tr>
+                                    <tr><th>お問い合わせ内容</th><td>{{ $contact->detail }}</td></tr>
+                                </table>
+                                <form action="/admin/delete" method="post" class="delete-form">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $contact->id }}">
+                                    <button type="submit" class="delete-button">削除</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
             </tr>
             @endforeach
         </table>

@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-        use HasFactory;
+
+
+        // ここにリレーションを定義します
+    public function category()
+    {
+        // contactsテーブルのcategory_idは、categoriesテーブルのidに紐付いています
+        return $this->belongsTo(Category::class);
+    }
+        
         protected $fillable = [
            'category_id',
            'first_name',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -16,8 +17,11 @@ class LoginController extends Controller
     // ログイン処理
     public function store(LoginRequest $request)
     {
+        // 認証に必要な情報のみを取り出す
+        $credentials = $request->only(['email', 'password']);
+
         // メールとパスワードで認証を試みる
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt($credentials)) {
             // 成功したらセッションを再生成して管理画面へ
             $request->session()->regenerate();
             return redirect()->intended('/admin');
@@ -25,11 +29,11 @@ class LoginController extends Controller
 
         // 失敗したらエラーメッセージを付けて戻す
         return back()->withErrors([
-            'email' => 'ログイン情報が登録されていません',
-        ])->onlyInput('email');
+            'login_error' => 'メールアドレスまたはパスワードが正しくありません',
+        ])->withInput(); // password以外を入力状態のまま戻す
     }
 
-    // ログアウト処理（ついでに作っておくと便利です）
+    // ログアウト処理
     public function destroy(Request $request)
     {
         Auth::logout();
