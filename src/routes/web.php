@@ -28,7 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/search', [AdminController::class, 'search']);
 
     // 削除処理
+    // Route::post('/admin/delete', [AdminController::class, 'destroy']);
+    
     Route::post('/admin/delete', [AdminController::class, 'destroy']);
+
 
     Route::get('/admin/export', [AdminController::class, 'export']);
 });

@@ -54,13 +54,13 @@ class AdminController extends Controller
     return view('admin', compact('contacts', 'categories'));
     }
 
-    public function destroy(Request $request)
+public function destroy(Request $request)
 {
-    // 送られてきたIDでお問い合わせデータを検索し、削除する
+    // フォームから送られた id を元にデータを削除
     Contact::find($request->id)->delete();
-
-    // 管理画面に戻る
-    return redirect('/admin');
+    
+    // 一覧画面に戻す
+    return redirect('/admin')->with('message', 'お問い合わせを削除しました');
 }
 
 public function export(Request $request)

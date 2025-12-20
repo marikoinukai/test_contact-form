@@ -100,14 +100,15 @@ function handleExport() {
                 </td>
                 <td class="admin-table__item">
                     {{-- 詳細ボタン --}}
-                    <a href="#modal-{{ $contact->id }}" class="detail-button">詳細</a>
+                    <button type="button" class="detail-button js-modal-open" data-target="modal-{{ $contact->id }}">詳細</button>
 
                     {{-- ★ここが重要：モーダル本体を td の中、かつ a タグの後ろに移動させます --}}
                     <div class="modal" id="modal-{{ $contact->id }}">
-                        <a href="#!" class="modal-overlay"></a>
-                        <div class="modal__content">
-                            <a href="#!" class="modal__close">×</a>
-                            <div class="modal__inner">
+                      <div class="modal-overlay js-modal-close"></div>
+        <div class="modal__content">
+                        {{-- 閉じる「×」ボタン --}}
+            <button type="button" class="modal__close js-modal-close">×</button>
+            <div class="modal__inner">
                                 <table class="modal-table">
                                     <tr><th>お名前</th><td>{{ $contact->last_name }}　{{ $contact->first_name }}</td></tr>
                                     <tr><th>性別</th><td>{{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</td></tr>
@@ -132,4 +133,30 @@ function handleExport() {
         </table>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 開くボタンの動作
+    const openBtns = document.querySelectorAll('.js-modal-open');
+    openBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const modal = document.getElementById(targetId);
+            if (modal) {
+                modal.classList.add('is-open');
+            }
+        });
+    });
+
+    // 閉じるボタン（×ボタンと背景）の動作
+    const closeBtns = document.querySelectorAll('.js-modal-close');
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.classList.remove('is-open');
+            }
+        });
+    });
+});
+</script>
 @endsection
