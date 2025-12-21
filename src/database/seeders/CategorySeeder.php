@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
-public function run()
+    public function run()
     {
         // スクショの5項目を配列で定義
         $categories = [
@@ -25,7 +25,7 @@ public function run()
 
         // 順番にデータベースへ登録
         foreach ($categories as $category) {
-            Category::create($category);
+            Category::firstOrCreate($category);
         }
     }
 }

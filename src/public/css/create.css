@@ -1,3 +1,8 @@
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+  -webkit-font-smoothing: antialiased; 
+}
+
 .contact__content {
     margin: 0 auto;
     padding: 15px 15px;
@@ -43,6 +48,9 @@
 .form-field {
   display: flex;
   gap: 35px;
+  width: 100%;
+  margin-bottom: 2px;
+    /* 下のエラーメッセージとの隙間を調整 */
 }
 
 .form-field label {
@@ -270,7 +278,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* 左寄せ */
     width: 100%;
 }
 
@@ -305,7 +312,35 @@
 
 /* エラーメッセージの微調整 */
 .error-message {
-    margin-top: 5px;
+    margin-top: 2px !important;
+    color: red;
+    font-size: 12px;
+    text-align: left;
     line-height: 1.2;
+}
+
+/* 電話番号の親要素 */
+.form-field.tel {
+  display: flex !important;
+  align-items: flex-start !important;
+  /* 全体を上揃えに強制 */
+  gap: 10px;
+}
+
+/* ハイフン（-）単体の調整 */
+.form-field.tel span {
+  display: inline-flex !important;
+  height: 40px;
+  /* ★入力ボックスの高さ（padding込み）に合わせる */
+  align-items: center;
+  /* ★40pxの高さの中で、ハイフンを中央に置く */
+  margin-top: -6px;
+}
+
+.tel-group {
+  display: flex;
+  flex-direction: column;
+  /* 入力欄とエラーを縦に並べる */
+  flex: 1;
 }
 
