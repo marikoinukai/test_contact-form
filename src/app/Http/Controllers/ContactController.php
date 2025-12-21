@@ -16,9 +16,7 @@ class ContactController extends Controller
     {
     // categoriesテーブルから全データを取得
     $categories = Category::all();
-
-    // viewに$categoriesを渡す
-    return view('create', compact('categories'));
+    return view('index', compact('categories'));
     }
 
     // 確認画面の表示

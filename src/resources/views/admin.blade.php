@@ -14,7 +14,7 @@
 
     {{-- 検索フォームエリア --}}
     <div class="search-section">
-        <form class="search-form" action="/admin/search" method="get">
+        <form class="search-form" action="/search" method="get">
             @csrf
             <div class="search-form__item">
                 <input type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword') }}">
@@ -44,7 +44,7 @@
 
             <div class="search-form__actions">
                 <button class="search-form__button-submit" type="submit">検索</button>
-                <a href="/admin" class="search-form__button-reset" style="text-decoration: none; display: inline-block; text-align: center;">リセット</a>
+                <a href="/reset" class="search-form__button-reset" style="text-decoration: none; display: inline-block; text-align: center;">リセット</a>
 </div>
         </form>
     </div>
@@ -64,7 +64,7 @@ function handleExport() {
     const originalAction = form.action;
     
     // 送信先をCSVダウンロード用のURLに変更して送信
-    form.action = '/admin/export';
+    form.action = '/export';
     form.submit();
     
     // 次の検索のために送信先を元に戻しておく
@@ -119,7 +119,7 @@ function handleExport() {
                                     <tr><th>お問い合わせの種類</th><td>{{ $contact->category->content }}</td></tr>
                                     <tr><th>お問い合わせ内容</th><td>{{ $contact->detail }}</td></tr>
                                 </table>
-                                <form action="/admin/delete" method="post" class="delete-form">
+                                <form action="/delete" method="post" class="delete-form">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $contact->id }}">
                                     <button type="submit" class="delete-button">削除</button>

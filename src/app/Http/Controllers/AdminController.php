@@ -116,4 +116,11 @@ public function export(Request $request)
 
         return $response;
     }
+
+    // 1. 追加：検索リセット機能 (PG06)
+    public function reset()
+    {
+        // /admin（一覧画面）にリダイレクトすることで検索条件をクリアする
+        return redirect('/admin');
+    }
 }
