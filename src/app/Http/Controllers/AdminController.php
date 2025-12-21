@@ -33,10 +33,10 @@ class AdminController extends Controller
         });
     }
 
-    // 性別検索
-    if ($request->gender) {
-        $query->where('gender', $request->gender);
-    }
+        // 性別検索
+        if ($request->filled('gender') && $request->gender !== 'all') {
+            $query->where('gender', $request->gender);
+        }
 
     // カテゴリ検索
     if ($request->category_id) {
@@ -63,34 +63,41 @@ public function destroy(Request $request)
     return redirect('/admin')->with('message', 'お問い合わせを削除しました');
 }
 
-public function export(Request $request)
+    public function export(Request $request)
     {
         // 1. 検索条件を反映させてデータを取得
         $query = Contact::query()->with('category');
 
+        // キーワード検索
         if ($request->filled('keyword')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('last_name', 'like', '%' . $request->keyword . '%')
-                  ->orWhere('first_name', 'like', '%' . $request->keyword . '%')
-                  ->orWhere('email', 'like', '%' . $request->keyword . '%');
+                    ->orWhere('first_name', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('email', 'like', '%' . $request->keyword . '%');
             });
         }
-        if ($request->filled('gender')) {
+
+        // 性別検索（searchメソッドとロジックを統一）
+        if ($request->filled('gender') && $request->gender !== 'all') {
             $query->where('gender', $request->gender);
         }
+
+        // カテゴリ検索
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
+
+        // 日付検索
         if ($request->filled('date')) {
             $query->whereDate('created_at', $request->date);
         }
 
-        $contacts = $query->get();
+        $contacts = $query->get(); // 絞り込まれた全データを取得
 
-        // 2. CSVの生成（ストリームレスポンス）
+        // 2. CSVの生成（ここが消えていたため真っ白になっていました）
         $response = new StreamedResponse(function () use ($contacts) {
             $handle = fopen('php://output', 'w');
-            
+
             // 文字化け防止（Excel用BOMを追加）
             fwrite($handle, "\xEF\xBB\xBF");
 
@@ -111,6 +118,7 @@ public function export(Request $request)
             fclose($handle);
         });
 
+        // レスポンスヘッダーの設定
         $response->headers->set('Content-Type', 'text/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename="contacts_' . date('YmdHis') . '.csv"');
 

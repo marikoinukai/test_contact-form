@@ -9,7 +9,7 @@
     <h2>Contact</h2>
   </div>
 
-  <form class="form contact-form" action="/confirm" method="post">
+  <form class="form contact-form" action="/confirm" method="post" novalidate>
     @csrf
 
     {{-- お名前 --}}

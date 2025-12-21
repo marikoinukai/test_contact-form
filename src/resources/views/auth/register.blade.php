@@ -10,7 +10,7 @@
         <h2 class="auth__title">Register</h2>
     </div>
     <div class="auth__card">
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/register" method="post" novalidate>
             @csrf
             <div class="form__group">
                 <div class="form__label">お名前</div>

@@ -10,7 +10,7 @@
         <h2 class="auth__title">Login</h2>
     </div>
     <div class="auth__card">
-        <form class="form" action="/login" method="post">
+        <form class="form" action="/login" method="post" novalidate>
             @csrf
             <div class="form__group">
                 <div class="form__label">メールアドレス</div>
