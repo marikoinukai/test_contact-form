@@ -24,7 +24,7 @@
 .search-form {
     padding: 15px 0;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -95,14 +95,14 @@
 .search-form__button-reset {
     background-color: #decaba;
     color: #fff;
-    height: 40px;
-    line-height: 40px;
+    height: 35px;
+    line-height: 35px;
     padding: 0px 10px;
     border: none;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    font-size: 13px;
     /* flex-shrink: 0; */
     flex: none;
 }
