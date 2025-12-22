@@ -7,7 +7,7 @@ body {
     margin: 0 auto;
     padding: 15px 15px;
     max-width: 1230px;
-    color: #b2a9a0;
+    color: #8b8174;
     font-size: 20px;
     text-align: center;
 }
@@ -194,6 +194,7 @@ body {
     min-width: 130px; /* 最低限の横幅を確保 */
     border: none; /* デフォルトの枠線を消す */
     border-radius: 0; /* 角を丸くしない（画像に合わせる） */
+    letter-spacing: 0.1em;
     
     /* テキスト設定 */
     font-size: 16px;
@@ -256,7 +257,7 @@ body {
 }
 
 .radio-text {
-  color: #7d736c;
+  color: #8b7969;
   font-size: 16px;
 }
 
@@ -344,3 +345,27 @@ body {
   flex: 1;
 }
 
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset !important;
+  /* 背景色#f5f5f5を強制維持 */
+  -webkit-text-fill-color: #333 !important;
+  /* 文字色を維持 */
+}
+
+::placeholder {
+  color: #ccc;
+  /* 薄いグレーに設定 */
+  opacity: 1;
+}
+
+/* IE/Edge/Safari用 */
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+::-moz-placeholder {
+  color: #ccc;
+}

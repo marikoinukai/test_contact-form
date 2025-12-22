@@ -115,7 +115,7 @@
       <div class="form-label">住所<span class="required">※</span></div>
       <div class="form-input-container">
         <div class="form-field">
-          <input type="text" name="address" placeholder="例: 東京都渋谷区..." value="{{ old('address') }}">
+          <input type="text" name="address" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
         </div>
         @error('address')
         <div class="error-message" style="color: red; font-size: 12px;">

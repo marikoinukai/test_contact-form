@@ -1,15 +1,17 @@
 /* 全体の背景と余白 */
 .admin__content {
     background-color: #fff;
-    padding: 50px 20px;
+    padding: 30px 20px;
     min-height: 100vh;
 }
 
 .admin__title {
+    margin: 0px auto 30px;
     text-align: center;
-    color: #8b7969;
-    font-size: 24px;
-    margin-bottom: 30px;
+    color: #8b8174;
+    font-size: 30px !important;
+    font-family: "Times New Roman", "Didot", "Noto Serif JP", serif !important;
+    font-weight: normal !important;
 }
 
 /* 検索エリア */
@@ -20,13 +22,14 @@
 }
 
 .search-form {
+    padding: 20px;
     display: flex;
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
     flex-wrap: nowrap;
-        /* 完成図のように一行に収める */
+    /* 完成図のように一行に収める */
 }
 
 /* 入力項目を均等かつ適切に広げる */
@@ -42,38 +45,38 @@
 .search-form__item input,
 .search-form__item select {
     width: 100%;
-        /* 親の item 幅いっぱいに広げる */
-        padding: 12px;
-        /* 高さを微調整 */
-        border: 1px solid #e0d8d0;
-        border-radius: 2px;
-        color: #b2a9a0;
-        background-color: #fbfaf9;
-        /* 入力欄の中だけ少し色をつける */
-    }
+    /* 親の item 幅いっぱいに広げる */
+    padding: 12px;
+    /* 高さを微調整 */
+    border: 1px solid #e0d8d0;
+    border-radius: 2px;
+    color: #b2a9a0;
+    background-color: #fbfaf9;
+    /* 入力欄の中だけ少し色をつける */
+}
 
 .search-form__button-submit {
     background-color: #8b7969;
-        color: #fff;
-        padding: 12px 40px;
-        border: none;
-        cursor: pointer;
-        flex-shrink: 0;
-        /* ボタンが潰れないように固定 */
+    color: #fff;
+    padding: 12px 22px;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    /* ボタンが潰れないように固定 */
 }
 
 .search-form__button-reset {
-    background-color: #f0ece9;
-        /* 完成図に合わせた薄いベージュ */
-        color: #8b7969;
-        /* 文字は茶色 */
-        padding: 12px 30px;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-        flex-shrink: 0;
+    background-color: #decaba;
+    /* 完成図に合わせた薄いベージュ */
+    color: #fff;
+    /* 文字は茶色 */
+    padding: 12px 9px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    flex-shrink: 0;
 }
 
 /* ツールバー（エクスポートとページネーション） */
@@ -90,6 +93,7 @@
     padding: 5px 15px;
     border: none;
     color: #8b7969;
+    font-weight: bold;
 }
 
 /* テーブルデザイン */
@@ -111,90 +115,39 @@
     padding: 15px;
 }
 
+.admin-table__header:first-child {
+    padding-left: 40px;
+}
+
+.admin-table__header:nth-child(3) {
+    padding-left: 50px;
+}
+
 .admin-table__item {
     padding: 15px;
     border-bottom: 1px solid #eee;
     color: #7d736c;
 }
 
+.admin-table__item:first-child {
+    padding-left: 40px;
+    padding-right: 0;
+}
+
+.admin-table__item:nth-child(3) {
+    padding-left: 50px;
+    padding-right: 0;
+}
+
 .detail-button {
-    border: 1px solid #f0ece9;
-        background-color: #fbfaf9;
-        color: #d1c3b5;
-        padding: 8px 20px;
-        text-decoration: none;
-        /* aタグの場合 */
-        font-size: 14px;
-        cursor: pointer;
-}
-
-/* モーダル全体の初期状態（非表示） */
-/* .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    z-index: 1000;
-} */
-
-/* ボタンが押された時に flex で表示（中央揃えを維持） */
-/* .modal:target {
-    display: flex;
-}
-
-.modal-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    cursor: default;
-}
-
-.modal__content {
-    position: relative;
-    background: #fff;
-    width: 600px;
-    padding: 40px;
-    border-radius: 2px;
-}
-
-.modal__close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    border: 1px solid #e0d8d0;
+    background-color: #fbfaf9;
+    color: #8b7969;
+    padding: 5px 15px;
     text-decoration: none;
-    color: #333;
-    font-size: 24px;
-} */
-
-/* モーダル内テーブルの装飾 */
-/* .modal-table {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.modal-table th {
-    text-align: left;
-    width: 30%;
-    padding: 10px 0;
-}
-
-.delete-button {
-    display: block;
-    margin: 0 auto;
-    background: #ff4d4b;
-    color: #fff;
-    border: none;
-    padding: 5px 20px;
+    font-size: 14px;
     cursor: pointer;
-} */
+}
 
 /* ページネーションのデザイン再現 */
 .pagination {
@@ -203,6 +156,7 @@
     padding: 0;
     margin: 0;
     align-items: center;
+
 }
 
 .pagination li {
@@ -218,7 +172,10 @@
     text-decoration: none;
     background-color: #fff;
     min-width: 35px;
+    height: 35px;
     text-align: center;
+    line-height: 35px;
+    padding: 0;
 }
 
 /* 現在表示しているページ番号（茶色背景） */
@@ -233,6 +190,7 @@
     color: #ccc;
     cursor: not-allowed;
 }
+
 /* --- モーダル制御（JavaScript一本化） --- */
 
 /* 1. 基本は非表示 */

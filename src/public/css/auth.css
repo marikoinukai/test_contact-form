@@ -1,23 +1,23 @@
 .auth__content {
-    background-color: #f4f2f0;
+    background-color: #e5e0d8;
     min-height: 100vh;
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 .auth__title {
     text-align: center;
     color: #8b7969;
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 30px;
 }
 
 .auth__card {
     background-color: #fff;
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
-    padding: 50px;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 60px 80px;
+    border-radius: 6px;
+    border: 2px solid #c1bdb5;
 }
 
 .form__group {
@@ -27,13 +27,15 @@
 .form__label {
     color: #8b7969;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .form__input input {
     width: 100%;
     padding: 15px;
+    padding-left: 30px;
     border: none;
-    background-color: #f4f4f4;
+    background-color: #e6e5e3;
     color: #333333;
 }
 
@@ -45,7 +47,7 @@
 .form__button-submit {
     background-color: #8b7969;
     color: #fff;
-    padding: 10px 40px;
+    padding: 5px 25px;
     border: none;
     cursor: pointer;
 }
