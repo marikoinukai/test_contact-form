@@ -55,13 +55,18 @@
       <div class="header-utilities">
         <a class="header__logo" href="/">FashionablyLate</a>
         <nav class="header__nav">
-          @if (Auth::check())
+          {{-- 1. ログイン済み かつ URLが admin で始まる時だけログアウトを表示 --}}
+          @if (Auth::check() && Request::is('admin*'))
           <form class="form" action="/logout" method="post">
             @csrf
             <button class="header__button" type="submit">logout</button>
           </form>
+
+          {{-- 2. ログイン画面にいる時は register ボタンを表示 --}}
           @elseif (Request::is('login'))
           <a class="header__button" href="/register">register</a>
+
+          {{-- 3. 登録画面にいる時は login ボタンを表示 --}}
           @elseif (Request::is('register'))
           <a class="header__button" href="/login">login</a>
           @endif
