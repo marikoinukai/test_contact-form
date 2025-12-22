@@ -64,7 +64,7 @@
         <tr class="confirm-table__row">
           <th class="confirm-table__header">お問い合わせの種類</th>
           <td class="confirm-table__text">
-  {{-- category_idから、対応するCategoryモデルのデータを1つ取得して表示 --}}
+
     @php
         $category = \App\Models\Category::find($contact['category_id']);
     @endphp

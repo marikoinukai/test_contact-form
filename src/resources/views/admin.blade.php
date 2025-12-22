@@ -5,29 +5,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <style>
-    /* ★ ここにhover機能のスタイルを追記します */
     .admin-table__row:hover {
         background-color: #f7f7f7;
-        /* マウスが乗った時の色（薄いグレー） */
         transition: background-color 0.2s ease;
-        /* 色の変化を滑らかにする */
     }
 
-    /* ヘッダー（見出し行）はhoverしても色が変わらないように固定する */
     .admin-table__row:first-child:hover {
         background-color: transparent;
     }
 
-    /* マウスが乗った時に少し行を強調したい場合（任意） */
     .admin-table__row:hover .admin-table__item {
         color: #333;
-        /* 文字色を少し濃くする */
     }
 </style>
-
-
-
-
 @endsection
 
 @section('content')
@@ -92,17 +82,10 @@
     </div>
     <script>
         function handleExport() {
-            // 検索フォームを取得
             const form = document.querySelector('.search-form');
-            // 元のアクションURL（/search）を保存
             const originalAction = form.action;
-
-            // 送信先をCSVダウンロード用URLに変更
             form.action = '/export';
-            // フォームを送信
             form.submit();
-
-            // ★重要：0.1秒待ってからURLを元に戻す（送信完了を確実にするため）
             setTimeout(() => {
                 form.action = originalAction;
             }, 100);
@@ -139,7 +122,7 @@
                     {{-- 詳細ボタン --}}
                     <button type="button" class="detail-button js-modal-open" data-target="modal-{{ $contact->id }}">詳細</button>
 
-                    {{-- ★ここが重要：モーダル本体を td の中、かつ a タグの後ろに移動させます --}}
+                    {{-- モーダル本体を td の中、かつ a タグの後ろに移動 --}}
                     <div class="modal" id="modal-{{ $contact->id }}">
                         <div class="modal-overlay js-modal-close"></div>
                         <div class="modal__content">
@@ -196,7 +179,6 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 開くボタンの動作
         const openBtns = document.querySelectorAll('.js-modal-open');
         openBtns.forEach(btn => {
             btn.addEventListener('click', function() {
@@ -207,8 +189,6 @@
                 }
             });
         });
-
-        // 閉じるボタン（×ボタンと背景）の動作
         const closeBtns = document.querySelectorAll('.js-modal-close');
         closeBtns.forEach(btn => {
             btn.addEventListener('click', function() {

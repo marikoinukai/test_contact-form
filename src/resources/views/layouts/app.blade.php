@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
   <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
   <style>
-    /* 共通ヘッダーの最小限のスタイル */
     .header__inner {
       max-width: 1230px;
       margin: 0 auto;
@@ -55,18 +54,13 @@
       <div class="header-utilities">
         <a class="header__logo" href="/">FashionablyLate</a>
         <nav class="header__nav">
-          {{-- 1. ログイン済み かつ 「現在のページが / ではない」時だけログアウトを表示 --}}
           @if (Auth::check() && !Request::is('/'))
           <form class="form" action="/logout" method="post">
             @csrf
             <button class="header__button" type="submit">logout</button>
           </form>
-
-          {{-- 2. ログイン画面にいる時は register ボタンを表示 --}}
           @elseif (Request::is('login'))
           <a class="header__button" href="/register">register</a>
-
-          {{-- 3. 登録画面にいる時は login ボタンを表示 --}}
           @elseif (Request::is('register'))
           <a class="header__button" href="/login">login</a>
           @endif
@@ -78,5 +72,4 @@
     @yield('content')
   </main>
 </body>
-
 </html>

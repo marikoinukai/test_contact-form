@@ -9,7 +9,6 @@
   <div class="thanks__background">
     Thank you
   </div>
-
   <div class="thanks__inner">
     <div class="thanks__message">
       <p>お問い合わせありがとうございました</p>

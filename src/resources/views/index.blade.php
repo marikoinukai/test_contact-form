@@ -52,9 +52,7 @@
             <input type="radio" name="gender" value="3" {{ old('gender') == '3' ? 'checked' : '' }}>
             <span class="radio-mark"></span><span class="radio-text">その他</span>
           </label>
-
         </div>
-        {{-- radio-field-boxの外（下）に配置します --}}
         @error('gender')
         <div class="error-message" style="color: red; font-size: 12px;">
           {{ $message }}
@@ -70,7 +68,6 @@
         <div class="form-field">
           <input type="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}">
         </div>
-
         @error('email')
         <div class="error-message">
           {{ $message }}
@@ -83,7 +80,6 @@
     <div class="form-row">
       <div class="form-label">電話番号<span class="required">※</span></div>
       <div class="form-input-container">
-
         <div class="form-field tel">
           <div class="tel-group">
             <input type="text" name="tel1" value="{{ old('tel1') }}" placeholder="080">
@@ -106,7 +102,6 @@
             @enderror
           </div>
         </div>
-
       </div>
     </div>
 
@@ -168,7 +163,7 @@
         @enderror
       </div>
     </div>
-
+    
     <div class="form__button">
       <button class="form__button-submit" type="submit">確認画面</button>
     </div>
