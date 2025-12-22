@@ -6,7 +6,7 @@
 }
 
 .admin__title {
-    margin: 0px auto 30px;
+    margin: 0px auto 0px;
     text-align: center;
     color: #8b8174;
     font-size: 30px !important;
@@ -22,62 +22,92 @@
 }
 
 .search-form {
-    padding: 20px;
+    padding: 15px 0;
     display: flex;
     gap: 10px;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
     flex-wrap: nowrap;
+    justify-content: space-between;
     /* 完成図のように一行に収める */
 }
 
 /* 入力項目を均等かつ適切に広げる */
 .search-form__item {
-    flex: 1;
+    flex: 1 1 0;
 }
 
 /* 名前入力欄だけ少し長くしてバランスをとる */
-.search-form__item:first-child {
-    flex: 2;
+/* .search-form__item:first-child {
+    flex: none;
+} */
+
+
+.search-form__item:nth-child(1) {
+    flex: 0.8 1 0;
+    /* ★名前・メールアドレス入力欄（一番広く） */
+}
+
+.search-form__item:nth-child(2) {
+    flex: 3 1 0;
+    /* ★性別（狭くてOK） */
+}
+
+.search-form__item:nth-child(3) {
+    flex: 1 1 0;
+    /* ★お問い合わせの種類 */
+}
+
+.search-form__item:nth-child(4) {
+    flex: 2 1 0;
+    /* ★年/月/日 */
 }
 
 .search-form__item input,
 .search-form__item select {
     width: 100%;
-    /* 親の item 幅いっぱいに広げる */
-    padding: 12px;
-    /* 高さを微調整 */
+    height: 35px;
+    font-size: 13px;
+    padding: 0 10px;
     border: 1px solid #e0d8d0;
     border-radius: 2px;
-    color: #b2a9a0;
+    color: #999;
     background-color: #fbfaf9;
-    /* 入力欄の中だけ少し色をつける */
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
 }
 
 .search-form__button-submit {
     background-color: #8b7969;
     color: #fff;
-    padding: 12px 22px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 13px;
+    padding: 0px 20px;
     border: none;
     cursor: pointer;
-    flex-shrink: 0;
-    /* ボタンが潰れないように固定 */
+    /* flex-shrink: 0; */
+    flex: none;
+    margin-right: 15px;
 }
 
 .search-form__button-reset {
     background-color: #decaba;
-    /* 完成図に合わせた薄いベージュ */
     color: #fff;
-    /* 文字は茶色 */
-    padding: 12px 9px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 10px;
     border: none;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
+    flex: none;
 }
+
+
 
 /* ツールバー（エクスポートとページネーション） */
 .admin-toolbar {
@@ -86,11 +116,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: 5px;
 }
 
 .export-button {
     background-color: #e0d8d0;
-    padding: 5px 15px;
+    padding: 3px 12px;
+    font-size: 12px;
     border: none;
     color: #8b7969;
     font-weight: bold;
@@ -100,19 +132,24 @@
 .admin-table__wrapper {
     max-width: 1100px;
     margin: 0 auto;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-collapse: collapse;
 }
 
 .admin-table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
+    table-layout: fixed;
 }
 
 .admin-table__header {
     background-color: #8b7969;
     color: #fff;
     text-align: left;
-    padding: 15px;
+    padding: 10px 15px;
+    font-size: 14px;
 }
 
 .admin-table__header:first-child {
@@ -124,8 +161,9 @@
 }
 
 .admin-table__item {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
     color: #7d736c;
 }
 
@@ -142,7 +180,7 @@
 .detail-button {
     border: 1px solid #e0d8d0;
     background-color: #fbfaf9;
-    color: #8b7969;
+    color: #c1b3a7;
     padding: 5px 15px;
     text-decoration: none;
     font-size: 14px;
@@ -160,7 +198,7 @@
 }
 
 .pagination li {
-    margin: 0 5px;
+    margin: 0 0px;
 }
 
 .pagination li a,
@@ -171,11 +209,12 @@
     color: #8b7969;
     text-decoration: none;
     background-color: #fff;
-    min-width: 35px;
-    height: 35px;
+    min-width: 30px;
+    height: 30px;
     text-align: center;
-    line-height: 35px;
+    line-height: 30px;
     padding: 0;
+    font-size: 12px;
 }
 
 /* 現在表示しているページ番号（茶色背景） */
@@ -274,6 +313,95 @@
     padding: 10px 40px;
     cursor: pointer;
     font-size: 14px;
+}
 
+/* --- セレクトボックス専用：右側に▼用の余白を作る --- */
+.search-form__item select {
+    padding-right: 35px;
+}
 
+/* --- ▼アイコンを作るための設定（末尾に追加） --- */
+
+.select-wrapper {
+    position: relative;
+    /* ★アイコンを配置する基準点にする */
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    /* 右端からの位置 */
+    top: 50%;
+    /* 中央配置 */
+    transform: translateY(-50%);
+    /* 三角形の作成 */
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #b2a9a0;
+    /* 指定のグレー色 */
+    pointer-events: none;
+    /* アイコンの上をクリックしても反応するようにする */
+}
+
+/* --- 日付入力欄（input type="date"）の個別設定 --- */
+.search-form__item input[type="date"] {
+    position: relative;
+    padding-right: 35px;
+    /* ▼アイコン用の余白 */
+    cursor: pointer;
+}
+
+/* ★ カレンダーマークを完全に消す（Chrome, Edge, Safari用） */
+.search-form__item input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: transparent;
+    /* アイコンを透明にする */
+    color: transparent;
+    /* 文字も透明にする */
+    cursor: pointer;
+    z-index: 1;
+    /* ▼アイコンより前面に来るようにしてクリック可能にする */
+}
+
+* --- 各カラムの幅を%で固定（合計100%になるように調整） --- */
+
+/* 1列目：お名前 */
+.admin-table__header:nth-child(1),
+.admin-table__item:nth-child(1) {
+    width: 18%;
+}
+
+/* 2列目：性別 */
+.admin-table__header:nth-child(2),
+.admin-table__item:nth-child(2) {
+    width: 10%;
+}
+
+/* 3列目：メールアドレス */
+.admin-table__header:nth-child(3),
+.admin-table__item:nth-child(3) {
+    width: 32%;
+    /* 長いメールアドレスがはみ出る場合は、以下を追加すると省略(...)されます */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 4列目：お問い合わせの種類 */
+.admin-table__header:nth-child(4),
+.admin-table__item:nth-child(4) {
+    width: 25%;
+}
+
+/* 5列目：ボタン（詳細） */
+.admin-table__header:nth-child(5),
+.admin-table__item:nth-child(5) {
+    width: 15%;
+    text-align: center;
 }

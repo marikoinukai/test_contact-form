@@ -48,30 +48,33 @@
 
             {{-- 2. 性別検索 --}}
             <div class="search-form__item">
-                <select name="gender">
-                    <option value="" {{ request('gender') == '' ? 'selected' : '' }}>性別</option>
-                    <option value="all" {{ request('gender') == 'all' ? 'selected' : '' }}>全て</option>
-                    <option value="1" {{ request('gender') == '1' ? 'selected' : '' }}>男性</option>
-                    <option value="2" {{ request('gender') == '2' ? 'selected' : '' }}>女性</option>
-                    <option value="3" {{ request('gender') == '3' ? 'selected' : '' }}>その他</option>
-                </select>
+                <div class="select-wrapper"><select name="gender">
+                        <option value="" {{ request('gender') == '' ? 'selected' : '' }}>性別</option>
+                        <option value="all" {{ request('gender') == 'all' ? 'selected' : '' }}>全て</option>
+                        <option value="1" {{ request('gender') == '1' ? 'selected' : '' }}>男性</option>
+                        <option value="2" {{ request('gender') == '2' ? 'selected' : '' }}>女性</option>
+                        <option value="3" {{ request('gender') == '3' ? 'selected' : '' }}>その他</option>
+                    </select>
+                </div>
             </div>
 
             {{-- 3. お問い合わせの種類 --}}
             <div class="search-form__item">
-                <select name="category_id">
-                    <option value="">お問い合わせの種類</option>
-                    @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                        {{ $category->content }}
-                    </option>
-                    @endforeach
-                </select>
+                <div class="select-wrapper"><select name="category_id">
+                        <option value="">お問い合わせの種類</option>
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->content }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
             {{-- 4. 日付検索 --}}
             <div class="search-form__item">
-                <input type="date" name="date" value="{{ request('date') }}">
+                <div class="select-wrapper"><input type="date" name="date" value="{{ request('date') }}">
+                </div>
             </div>
 
             <div class="search-form__actions">
