@@ -55,8 +55,8 @@
       <div class="header-utilities">
         <a class="header__logo" href="/">FashionablyLate</a>
         <nav class="header__nav">
-          {{-- 1. ログイン済み かつ URLが admin で始まる時だけログアウトを表示 --}}
-          @if (Auth::check() && Request::is('admin*'))
+          {{-- 1. ログイン済み かつ 「現在のページが / ではない」時だけログアウトを表示 --}}
+          @if (Auth::check() && !Request::is('/'))
           <form class="form" action="/logout" method="post">
             @csrf
             <button class="header__button" type="submit">logout</button>
