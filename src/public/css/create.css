@@ -18,7 +18,6 @@ body {
     text-align: center;
 }
 
-
 .contact-form {
   max-width: 900px;
   margin: 0 auto;
@@ -31,8 +30,8 @@ body {
 }
 
 .required {
-  color: #ff4d4b;        /* 画像と同系の赤 */
-  font-size: 14px;      /* 文字より少し小さく */
+  color: #ff4d4b;        
+  font-size: 14px;      
   margin-left: 4px;
   vertical-align: middle;
 }
@@ -50,7 +49,6 @@ body {
   gap: 35px;
   width: 100%;
   margin-bottom: 2px;
-    /* 下のエラーメッセージとの隙間を調整 */
 }
 
 .form-field label {
@@ -61,53 +59,44 @@ body {
 
 .form-field input[type="radio"] {
   margin-right: 3px;
-  accent-color: #8b7969; /* 選択時の色をボタン色に合わせる（モダンブラウザ対応） */
-
+  accent-color: #8b7969; 
 }
 
 .form-field-radio label {
-    margin-right: 70px; /* 各選択肢の右側に 50px の余白を作る */
+    margin-right: 70px; 
 }
 
-/* 性別の入力エリア全体を右にずらす */
 .radio-field-box {
     margin-left: 20px; 
-}/* この数値を大きくするほど右に移動します */
+}
 
 .form-field.tel {
     display: flex;
-    align-items: center; /* ハイフンと入力欄の上下中央を揃える */
-    justify-content: space-between; /* 子要素を等間隔に配置 */
-    gap: 10px; /* ボックスとハイフンの間の隙間 */
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 10px; 
 }
 
 .form-field.tel input {
-    flex: 1; /* 3つのボックスが同じ幅で、親要素いっぱいに広がる */
+    flex: 1; 
     padding: 10px;
     background-color: #f7f7f7;
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
-    text-align: center; /* 数字を中央に表示 */
+    text-align: center; 
 } 
 
 .form-row {
   display: grid;
   grid-template-columns: 300px 1fr;
-
-  /* 項目間の余白をさらに微調整したい場合は gap を使います */
   column-gap: 20px;
-  /* 修正ポイント：上端（start）に揃える */
   align-items: start;
-  
-/* 行ごとの間隔（必要に応じて） */
   margin-bottom: 30px;
-  
 }
 
 .form-label {
   text-align: left;
-  /* 入力欄の1行目と高さを合わせるための微調整 */
   padding-top: 10px;
 }
 
@@ -115,18 +104,14 @@ body {
   text-align: left;
 }
 
-
-
-/* 1. 親要素：ここを基準にする */
 .select-wrapper {
-    position: relative; /* これが必須！▼の基準位置になります */
-    width: 50%;        /* 入力欄と同じ幅にする */
+    position: relative; 
+    width: 50%;        
 }
 
-/* 2. セレクトボックス本体 */
 .form-select {
   width: 100%;
-  padding: 12px 40px 12px 16px; /* 右に余白 */
+  padding: 12px 40px 12px 16px; 
   background-color: #f5f5f5;
   border: none;
   font-family: inherit;
@@ -139,78 +124,61 @@ body {
   -moz-appearance: none; 
 }
 
- /* 独自の▼アイコンを作る */
+ /* ▼アイコンを作る */
 .select-wrapper::after {
     content: '';
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    /* 三角形の形を作る（画像のようなグレーの逆三角形） */
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 10px solid #b2a9a0; 
-    pointer-events: none; /* アイコンをクリックしてもselectが反応するようにする */
+    pointer-events: none; 
 }
 
 .form-field textarea {
-    width: 100%;        /* 横幅いっぱい */
-    height: 160px;      /* 画像に合わせた高さ（適宜調整してください） */
-    padding: 12px 30px;      /* 内側の余白を少し広めに */
+    width: 100%;        
+    height: 160px;      
+    padding: 12px 30px;      
     background-color: #f5f5f5;
     border: none;
     color: #333;
     border-radius: 4px;
-    box-sizing: border-box; /* 枠線を含めて幅を計算 */
-    
-    /* ユーザーが右下のつまみで大きさを変えるのを「上下のみ」に制限する */
+    box-sizing: border-box; 
     resize: vertical; 
 }
 
-/* 入力中の枠線の色を合わせる（以前のinputと同じ設定） */
 .form-field textarea:focus {
     outline: none;
     border-color: #b2a9a0;
     background-color: #fff;
 }
 
-
-
-
 /* ボタンの外側のエリア（中央寄せ用） */
 .form__button {
-    margin-top: 40px; /* フォームとの間に余白を作る */
-    text-align: center; /* ボタンを中央に配置する */
+    margin-top: 40px; 
+    text-align: center; 
 }
 
 /* ボタン自体のデザイン */
 .form__button-submit {
-    /* 色と背景 */
-    background-color: #8b7969; /* ロゴやContactに近い濃い茶色 */
-    color: #fff; /* 文字色は白 */
-    
-    /* サイズと形 */
-    padding: 5px 20px; /* 上下と左右に余白を作ってボタンを大きくする */
-    min-width: 130px; /* 最低限の横幅を確保 */
-    border: none; /* デフォルトの枠線を消す */
-    border-radius: 0; /* 角を丸くしない（画像に合わせる） */
+    background-color: #8b7969; 
+    color: #fff; 
+    padding: 5px 20px; 
+    min-width: 130px; 
+    border: none; 
+    border-radius: 0; 
     letter-spacing: 0.1em;
-    
-    /* テキスト設定 */
     font-size: 16px;
-    /* font-weight: bold; */
-    cursor: pointer; /* マウスを乗せた時に指マークにする */
-    
-    /* アニメーション（お好みで） */
+    cursor: pointer; 
     transition: opacity 0.3s;
 }
 
-    /* ボタンにマウスを乗せた時（ホバー）の演出 */
-    .form__button-submit:hover {
-        opacity: 0.8; /* 少し薄くして「押せる感」を出す */
-    }
+.form__button-submit:hover {
+    opacity: 0.8; 
+}
 
-/* ラジオボタン全体の並び */
 .radio-field-box {
   display: flex;
   gap: 40px;
@@ -239,19 +207,19 @@ body {
     height: 18px;
     border-radius: 50%;
     margin-right: 8px;
-    background-color: transparent; /* 未選択時は透明 */
+    background-color: transparent; 
     position: relative;
     flex-shrink: 0;
     vertical-align: middle;
     border: 1px solid #ddd;
 }
 
-/* ★チェックが入ったときだけ、背景色を塗る */
+/* チェックが入ったときだけ、背景色を塗る */
 .radio input:checked + .radio-mark {
-    background-color: #9c8f86; /* 画像のような茶色で塗りつぶし */
+    background-color: #9c8f86; 
 }
 
-/* 中の点は不要になるので、もし::afterの設定があれば削除するか以下で無効化します */
+/* 中の点は不要になるので、もし::afterの設定があれば削除するか以下で無効化 */
 .radio input:checked + .radio-mark::after {
     display: none;
 }
@@ -265,13 +233,11 @@ body {
 .name-fields {
     display: flex;
     gap: 20px;
-    /* 姓と名の間の隙間 */
     width: 100%;
 }
 
 .name-fields input {
     flex: 1;
-    /* 姓と名の幅を均等にする */
 }
 
 /* 右側カラム全体を縦に並べる（入力欄 -> エラー） */
@@ -282,23 +248,18 @@ body {
     width: 100%;
 }
 
-
 /* お名前コンテナ：姓と名のグループを横に並べる */
 .name-container {
     display: flex;
     gap: 20px;
-    /* 左右のボックスの間の隙間 */
     width: 100%;
-    /* 右側のカラムいっぱいに広げる */
 }
 
 /* 姓・名それぞれのグループ（入力欄＋エラー） */
 .name-group {
     flex: 1;
-    /* 左右均等な幅にする */
     display: flex;
     flex-direction: column;
-    /* 入力欄とエラーを縦に並べる */
 }
 
 /* 入力ボックス自体の幅を100%にする */
@@ -308,7 +269,6 @@ body {
     background: #f5f5f5;
     border: none;
     box-sizing: border-box;
-    /* パディングを含めた幅計算 */
 }
 
 /* エラーメッセージの微調整 */
@@ -324,7 +284,6 @@ body {
 .form-field.tel {
   display: flex !important;
   align-items: flex-start !important;
-  /* 全体を上揃えに強制 */
   gap: 10px;
 }
 
@@ -332,32 +291,25 @@ body {
 .form-field.tel span {
   display: inline-flex !important;
   height: 40px;
-  /* ★入力ボックスの高さ（padding込み）に合わせる */
   align-items: center;
-  /* ★40pxの高さの中で、ハイフンを中央に置く */
   margin-top: -6px;
 }
 
 .tel-group {
   display: flex;
   flex-direction: column;
-  /* 入力欄とエラーを縦に並べる */
   flex: 1;
 }
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset !important;
-  /* 背景色#f5f5f5を強制維持 */
   -webkit-text-fill-color: #333 !important;
-  /* 文字色を維持 */
 }
 
 ::placeholder {
   color: #ccc;
-  /* 薄いグレーに設定 */
   opacity: 1;
 }
 

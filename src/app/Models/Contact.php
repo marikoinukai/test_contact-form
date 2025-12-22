@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-
-
+    
         // ここにリレーションを定義します
     public function category()
     {

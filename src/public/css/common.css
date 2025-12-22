@@ -7,33 +7,24 @@
 
 .header__logo {
     font-family: "Noto Serif JP", serif;
-    /* Contactと同じ明朝体系 */
     font-size: 55px;
-    /* サイズを大きく */
     color: #8b8174;
-    /* 色を統一 */
     text-decoration: none;
-    /* 下線を消す */
     display: block;
     text-align: center;
     padding: 0;
 }
 
-/* 右側のボタン（nav）の設定 */
 .header__nav {
     position: absolute;
     right: 0;
-    /* 右端に固定 */
 }
 
-/* 右上のボタン（login/register）のデザイン */
 .header__button {
     display: inline-block;
     text-decoration: none;
     background-color: #e7e5e2 !important;
-    /* スクショの薄いベージュ */
     color: #c1ae9c !important;
-    /* 文字の茶色 */
     padding: 2px 14px !important;
     border-radius: 0px !important;
     font-size: 14px;
@@ -42,7 +33,6 @@
     border: 1px solid #c1ae9c !important;
 }
 
-/* ホバー（マウスを乗せた時）の演出 */
 .header__button:hover {
     background-color: #d8d1ca;
 }
@@ -58,20 +48,16 @@
     max-width: 1230px;
 }
 
-
-/* 全体と全体では効かないh2のフォントを指定 */
 body,
 h2 {
     font-family: "Times New Roman", "Didot", "Georgia", "Yu Gothic", serif;
     font-weight: 400;
 }
 
-/* フォームを必ず継承させている */
 input,
 select,
 button {
     font-family: inherit;
-
 }
 
 .header__logo,

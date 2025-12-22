@@ -14,7 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        // スクショの5項目を配列で定義
         $categories = [
             ['content' => '商品のお届けについて'],
             ['content' => '商品の交換について'],
@@ -23,7 +22,6 @@ class CategorySeeder extends Seeder
             ['content' => 'その他'],
         ];
 
-        // 順番にデータベースへ登録
         foreach ($categories as $category) {
             Category::firstOrCreate($category);
         }

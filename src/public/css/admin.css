@@ -1,4 +1,3 @@
-/* 全体の背景と余白 */
 .admin__content {
     background-color: #fff;
     padding: 30px 20px;
@@ -28,38 +27,26 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* 完成図のように一行に収める */
 }
 
-/* 入力項目を均等かつ適切に広げる */
 .search-form__item {
     flex: 1 1 0;
 }
 
-/* 名前入力欄だけ少し長くしてバランスをとる */
-/* .search-form__item:first-child {
-    flex: none;
-} */
-
-
 .search-form__item:nth-child(1) {
     flex: 0.8 1 0;
-    /* ★名前・メールアドレス入力欄（一番広く） */
 }
 
 .search-form__item:nth-child(2) {
     flex: 3 1 0;
-    /* ★性別（狭くてOK） */
 }
 
 .search-form__item:nth-child(3) {
     flex: 1 1 0;
-    /* ★お問い合わせの種類 */
 }
 
 .search-form__item:nth-child(4) {
     flex: 2 1 0;
-    /* ★年/月/日 */
 }
 
 .search-form__item input,
@@ -87,7 +74,6 @@
     padding: 0px 20px;
     border: none;
     cursor: pointer;
-    /* flex-shrink: 0; */
     flex: none;
     margin-right: 15px;
 }
@@ -103,11 +89,8 @@
     text-decoration: none;
     display: inline-block;
     font-size: 13px;
-    /* flex-shrink: 0; */
     flex: none;
 }
-
-
 
 /* ツールバー（エクスポートとページネーション） */
 .admin-toolbar {
@@ -194,7 +177,6 @@
     padding: 0;
     margin: 0;
     align-items: center;
-
 }
 
 .pagination li {
@@ -217,7 +199,7 @@
     font-size: 12px;
 }
 
-/* 現在表示しているページ番号（茶色背景） */
+/* 現在表示しているページ番号 */
 .pagination li.active span {
     background-color: #8b7969;
     color: #fff;
@@ -243,7 +225,7 @@
     z-index: 1000;
 }
 
-/* 2. JavaScriptで .is-open クラスがついた時だけ表示 */
+/* 2. JavaScriptで .is-open クラスがついた時のみ表示 */
 .modal.is-open {
     display: flex;
     align-items: center;
@@ -281,7 +263,6 @@
     width: 30px;
     height: 30px;
     border: 1px solid #9a9893;
-    /* 丸い枠線 */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -337,11 +318,8 @@
     padding-right: 35px;
 }
 
-/* --- ▼アイコンを作るための設定（末尾に追加） --- */
-
 .select-wrapper {
     position: relative;
-    /* ★アイコンを配置する基準点にする */
     width: 100%;
 }
 
@@ -349,24 +327,17 @@
     content: '';
     position: absolute;
     right: 15px;
-    /* 右端からの位置 */
     top: 50%;
-    /* 中央配置 */
     transform: translateY(-50%);
-    /* 三角形の作成 */
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 8px solid #b2a9a0;
-    /* 指定のグレー色 */
     pointer-events: none;
-    /* アイコンの上をクリックしても反応するようにする */
 }
 
-/* --- 日付入力欄（input type="date"）の個別設定 --- */
 .search-form__item input[type="date"] {
     position: relative;
     padding-right: 35px;
-    /* ▼アイコン用の余白 */
     cursor: pointer;
 }
 
@@ -378,45 +349,34 @@
     top: 0;
     left: 0;
     background: transparent;
-    /* アイコンを透明にする */
     color: transparent;
-    /* 文字も透明にする */
     cursor: pointer;
     z-index: 1;
-    /* ▼アイコンより前面に来るようにしてクリック可能にする */
 }
 
-
-
-/* 1列目：お名前 */
 .admin-table__header:nth-child(1),
 .admin-table__item:nth-child(1) {
     width: 18%;
 }
 
-/* 2列目：性別 */
 .admin-table__header:nth-child(2),
 .admin-table__item:nth-child(2) {
     width: 10%;
 }
 
-/* 3列目：メールアドレス */
 .admin-table__header:nth-child(3),
 .admin-table__item:nth-child(3) {
     width: 32%;
-    /* 長いメールアドレスがはみ出る場合は、以下を追加すると省略(...)されます */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-/* 4列目：お問い合わせの種類 */
 .admin-table__header:nth-child(4),
 .admin-table__item:nth-child(4) {
     width: 25%;
 }
 
-/* 5列目：ボタン（詳細） */
 .admin-table__header:nth-child(5),
 .admin-table__item:nth-child(5) {
     width: 15%;

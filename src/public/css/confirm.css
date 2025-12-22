@@ -13,7 +13,6 @@
     font-weight: normal !important;
 }
 
-/* テーブル全体のスタイル */
 .confirm-table {
     max-width: 900px;
     margin: 0 auto;
@@ -22,18 +21,14 @@
 .confirm-table__inner {
     width: 100%;
     border-collapse: collapse;
-    /* 枠線を重ねる */
 }
 
 .confirm-table__row {
     border: 1px solid #eee;
-    /* 薄い枠線 */
 }
 
-/* 左側のヘッダー部分（ベージュ） */
 .confirm-table__header {
     background-color: #a8998f;
-    /* 画像に近い色 */
     color: #fff;
     width: 30%;
     padding: 20px 20px 20px 40px;
@@ -42,7 +37,6 @@
     font-size: 16px;
 }
 
-/* 右側の入力内容表示部分 */
 .confirm-table__text {
     padding: 20px 20px 20px 30px;
     text-align: left;
@@ -51,14 +45,12 @@
     background-color: #fff;
 }
 
-/* ボタンエリア */
 .form__button {
     margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    /* 送信と修正の間の距離 */
 }
 
 .form__button-submit {
