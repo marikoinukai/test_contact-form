@@ -16,9 +16,9 @@
 - php artisan db:seed
 
 ## 使用技術（実行環境）
-- PHP 8.2.11
+- PHP 8.1.34 
 - Laravel 8.83.8
-- MySQL 8.0.26
+- MySQL 11.8.3
 - nginx 1.21.1
 
 ## ER図
